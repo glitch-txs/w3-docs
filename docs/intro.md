@@ -39,9 +39,9 @@ Make sure props are set outside the App component.
 
 :::
 ```tsx
-import { W3, connectors, mainnet } from '@glitch-txs/w3-react'
+import { W3, connectors, mainnet, W3Props } from '@glitch-txs/w3-react'
 
-const w3props = {
+const w3props: W3Props = {
   connectors: connectors(),
   chains:[mainnet]
 }
@@ -117,17 +117,17 @@ export default function Connect() {
 
 4. wrap it with ether.js, viem or web3.js!
 ```tsx
-import { ethers } from 'ethers'
-import { getW3Provider } from '@glitch-txs/w3-hooks'
+import { BrowserProvider } from 'ethers'
+import { getW3Provider } from '@glitch-txs/w3-react'
 
 export default function useEthersProvider() {
 
   const w3Povider = getW3Provider()
 
   const provider = useMemo(()=>{
-    if(w3Povider)
-    return new ethers.providers.Web3Provider(w3Povider)
-  },[w3Povider])
+    if(w3Provider)
+    return new BrowserProvider(w3Provider)
+  },[w3Provider])
   
   return { provider }
 }
@@ -139,7 +139,7 @@ export default function useEthersProvider() {
 3. WalletConnect
 4. Trust Wallet
 5. Phantom (EVM)
-6. EIP-6963
+6. EIP-6963 compatible wallets
 
 ### Create a custom chain
 
