@@ -72,7 +72,14 @@ export default function Connect() {
 }
 ```
 
-You can also set a connection to a sigle wallet by passing the wallet name or id and importing the `connectW3` function directly from the library:
+You can also set a connection to a single wallet by using the wallet name or id as argument to the `connectW3` function:
+
+:::tip NOTE
+
+You can also import `connectW3` and `disconnectW3` functions directly from the library
+
+:::
+
 ```tsx
 import { connectW3 } from '@glitch-txs/w3-react'
 
