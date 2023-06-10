@@ -7,7 +7,7 @@ sidebar_position: 1
 W3 is an evm wallet connectors library for vanilla JS and React.js. <br/>
 It sets up for you a wallet connection infrastructure with a built-in store and React hooks to handle the wallet state and user's sessions.
 
-- Compatible with ethers.js, viem and web3.js
+**Compatible with ethers.js, viem and web3.js**
 
 ### Install
 
