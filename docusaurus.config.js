@@ -60,7 +60,7 @@ const config = {
             label: 'DOCS',
           },
           {
-            href: 'https://github.com/glitch-txs/w3-docs',
+            href: 'https://github.com/glitch-txs/w3',
             label: 'GitHub',
             position: 'right',
           },
