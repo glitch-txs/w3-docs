@@ -7,7 +7,7 @@ sidebar_position: 1
 W3 is an evm wallet connectors library for vanilla JS and React.js. <br/>
 It sets up for you a wallet connection infrastructure with a built-in store and React hooks to handle the wallet state and user's sessions.
 
-Compatible with ethers.js, viem and web3.js
+- Compatible with ethers.js, viem and web3.js
 
 ### Install
 
@@ -24,9 +24,9 @@ pnpm
 pnpm i @glitch-txs/w3-react
 ```
 
-### Init W3 Components
+### Init the W3 Component
 
-Select the connectors and chains you want to add. Calling `connectors` function will invoke all supported connectors.
+Select the connectors and chains you want to support. Calling `connectors` function will invoke all supported connectors.
 :::danger Take care
 
 Make sure props are set outside the App component.
@@ -50,6 +50,12 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 ```
 
+:::tip NOTE
+
+With this type of config you need to set an enviroment variable for WalletConnect's project ID: `NEXT_PUBLIC_WALLETCONNECT_ID="yourProjectID"`. For others ways of configuration see *add link*
+
+:::
+
 ### Connect to a Wallet
 
 Import the `useConnect` hook and loop through the connectors:
@@ -58,12 +64,12 @@ import { useConnect } from '@glitch-txs/w3-react'
 
 export default function Connect() {
 
-  const { connectors, connectW3, disconnectW3, errorMessage } = useConnect()
+  const { connectors, connectW3, disconnectW3, isLoading } = useConnect()
   
   return (
     {<>
       connectors.map((wallet) =>
-      (<button key={wallet.id} disabled={wallet.ready} onClick={()=>connectW3(wallet)}>
+      (<button key={wallet.id} disabled={isLoading} onClick={()=>connectW3(wallet)}>
         {wallet.name}
       </button>)
     </>
@@ -72,7 +78,7 @@ export default function Connect() {
 }
 ```
 
-You can also set a connection to a single wallet by using the wallet name or id as argument to the `connectW3` function:
+You can also set a connection to a single wallet by using the wallet's name as argument of the `connectW3` function:
 
 :::tip NOTE
 
@@ -103,20 +109,23 @@ export default function Connect() {
   
   const address = getW3Address()
   const chain = getW3Chain()
+  const error = getW3Error()
   
   return (
     <div>
       {address ?
-      <button onClick={()=>disconnectW3()} >Disconnect</button> :
+      <button onClick={disconnectW3} >Disconnect</button> :
       <button disable={isLoading} onClick={()=>connectW3('MetaMask')} >Connect to MetaMask</button>
       }
       Chain ID: {chain}
+      <br/>
+      {error.message}
     </div>
   )
 }
 ```
 
-4. wrap it with ether.js, viem or web3.js!
+### Use with with ether.js, viem or web3.js!
 ```tsx
 import { BrowserProvider } from 'ethers'
 import { getW3Provider } from '@glitch-txs/w3-react'
