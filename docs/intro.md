@@ -125,14 +125,14 @@ export default function Connect() {
 }
 ```
 
-### Use with with ether.js, viem or web3.js!
+### Use with with ether.js, viem or web3.js
 ```tsx
 import { BrowserProvider } from 'ethers'
 import { getW3Provider } from '@glitch-txs/w3-react'
 
 export default function useEthersProvider() {
 
-  const w3Povider = getW3Provider()
+  const w3Provider = getW3Provider()
 
   const provider = useMemo(()=>{
     if(w3Provider)
