@@ -33,7 +33,7 @@ export default function Connect() {
 **Connectors** is an *array* that contains all the **wallet instances** that we already initialized. Each wallet instance contains the following **properties**:
 
 - **id**
-  <br/> Unique id of the connector
+  <br/> Unique id of the wallet
 - **name**
   <br/> The name of the wallet as string
 - **installed**
@@ -45,7 +45,7 @@ export default function Connect() {
 
 A boolean value that will be `true` if:
 
-- The W3 library is checking the user address and chain id on the first page load.
+- The W3 library is checking the user address and chain id on the first website's load.
 - The user is in the connection process. Which starts when calling `connectW3` function and finishes whenever the user rejects the connection request or accepts it.
 
 ### connectW3
@@ -84,7 +84,7 @@ const chain: number = getW3Chain()
 
 ### getW3Error
 
-Will return an error message is something wrong happens, this one is meant to be displayed in the UI for the user.
+Will return an error message if something wrong happens, this one is meant to be displayed in the UI for the user.
 
 ```ts
 const errorMessage: string = getW3Error()

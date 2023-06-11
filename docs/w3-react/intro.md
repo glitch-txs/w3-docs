@@ -51,7 +51,7 @@ Create your WalletConnect Project ID at <a href='https://cloud.walletconnect.com
 
 ### Connect to a Wallet
 
-Import the `useConnect` hook and loop through the connectors:
+Import the `useConnect` hook and map through the connectors:
 ```tsx
 import { useConnect } from '@glitch-txs/w3-react'
 
@@ -102,7 +102,7 @@ export default function Connect() {
   
   const address = getW3Address()
   const chain = getW3Chain()
-  const error = getW3Error()
+  const errorMessage = getW3Error()
   
   return (
     <div>
@@ -112,7 +112,7 @@ export default function Connect() {
       }
       Chain ID: {chain}
       <br/>
-      {error.message}
+      {errorMessage}
     </div>
   )
 }

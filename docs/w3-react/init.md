@@ -80,7 +80,7 @@ const w3props: W3Props = {
     new WalletConnect({ 
       icon: 'public/icons/walletconnect.svg',
       projectId: env.process.PROJECT_ID as string,
-      showQrModal: true, //true as default
+      showQrModal: true, //true by default
       qrModalOptions: {
         themeMode: 'light'
       },
@@ -92,11 +92,13 @@ const w3props: W3Props = {
 
 :::tip Note
 
-The WalletConnect's project id can be set either via *options* or by creating an enviroment variable in your project called `NEXT_PUBLIC_WALLETCONNECT_ID`
+The WalletConnect's project id can be set either as an argument or by creating an enviroment variable in your project called `NEXT_PUBLIC_WALLETCONNECT_ID`
 
 :::
 
-If you'd like to handle the modal by yourself you can listen to the uri with
+Create your WalletConnect Project ID at <a href='https://cloud.walletconnect.com/sign-in' target='_blank' >WalletConnect Cloud</a>
+
+If you'd like to handle the modal on your own you can listen to the uri with
 ```ts
 window.addEventListener('walletconnect#uri', handleUri)
 ```
@@ -141,7 +143,7 @@ connectors function will expect you to have the WalletConnect project ID in a .e
 
 ### Chains
 
-Import the chains you want your dapp to support and pass them as argument inside an array.
+Import the chains you want your dapp to support and set them inside an array.
 
 ```tsx
 import { W3, connectors, mainnet, bsc, avalanche, W3Props } from '@glitch-txs/w3-react'
