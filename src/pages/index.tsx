@@ -5,6 +5,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 
 import styles from './index.module.css';
+import Gradients from '../components/gradients/Gradients';
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
@@ -21,6 +22,7 @@ function HomepageHeader() {
           </Link>
         </div>
       </div>
+      <div className={styles.logo}>Glitch.</div>
     </header>
   );
 }
@@ -32,6 +34,7 @@ export default function Home(): JSX.Element {
       title={`Hello from ${siteConfig.title}`}
       description="Description will go into a meta tag in <head />">
       <HomepageHeader />
+      <Gradients/>
     </Layout>
   );
 }

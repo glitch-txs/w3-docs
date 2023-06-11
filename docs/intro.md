@@ -125,7 +125,7 @@ export default function Connect() {
 }
 ```
 
-### Use with with ether.js, viem or web3.js
+### Use with with ethers.js, viem or web3.js
 ```tsx
 import { BrowserProvider } from 'ethers'
 import { getW3Provider } from '@glitch-txs/w3-react'

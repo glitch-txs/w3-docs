@@ -49,7 +49,7 @@ The Phantom connector only works with evm chains.
 
 :::
 
-Connector must be initialized inside an array as shown in the example. They can take an **optional** argument to store the wallet's icon:
+Connectors must be initialized inside an array as shown in the example. They can take an **optional** argument to store the wallet's icon:
 
 ```tsx
 import { W3, MetaMask, mainnet, W3Props } from '@glitch-txs/w3-react'
@@ -236,6 +236,6 @@ export default function App({ Component, pageProps }: AppProps) {
 :::danger Important
 
 - w3props must be declared outside the root component. 
-- The W3 component must be placed at the root of your application, as it's only ment to be mounted once.
+- The W3 component must be placed at the root of your application, as it's only meant to be mounted once.
 
 :::
