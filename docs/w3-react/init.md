@@ -101,7 +101,7 @@ Create your WalletConnect Project ID at <a href='https://cloud.walletconnect.com
 If you'd like to handle the modal on your own you can listen to the uri with
 ```ts
 const handleUri = (event)=>{
-  const uri = event.detail.uri
+  const { uri } = event.detail
   //handle uri...
 }
 window.addEventListener('walletconnect#uri', handleUri)
