@@ -81,7 +81,8 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(225.13deg, var(--white) 1.83%, var(--black) 90.04%);
+  background: linear-gradient(225.13deg, var(--black) 1.83%, var(--white) 90.04%);
+  border-radius: 7px;
 }
 
 ::-webkit-scrollbar-corner {

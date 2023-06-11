@@ -4,24 +4,15 @@ sidebar_position: 1
 
 # Getting Started
 
-W3 React is an evm wallet connectors library for React.js and its frameworks. <br/>
+W3 React is an evm wallet connectors library for React.js and its frameworks. It's inspired in <a href="https://github.com/wagmi-dev/references" target="_blank">Wagmi's references</a> with the difference that it's eth-lib agnostic. <br/>
 It sets up for you a wallet connection infrastructure with a built-in store and React hooks to handle the wallet state and user's sessions.
 
-**Compatible with ethers.js, viem and web3.js**
+**Compatible with <a href="https://docs.ethers.org/v6/" target="_blank">ethers.js</a>, <a href="https://viem.sh/" target="_blank">viem</a> and <a href="https://docs.web3js.org/" target="_blank">Web3.js</a>**
 
 ### Install
 
-npm
-```bash
+```bash npm2yarn
 npm i @glitch-txs/w3-react
-```
-yarn
-```bash
-yarn add @glitch-txs/w3-react
-```
-pnpm
-```bash
-pnpm i @glitch-txs/w3-react
 ```
 
 ### Init the W3 Component
@@ -52,9 +43,11 @@ export default function App({ Component, pageProps }: AppProps) {
 
 :::tip NOTE
 
-With this type of config you need to set an enviroment variable for WalletConnect's project ID: `NEXT_PUBLIC_WALLETCONNECT_ID="yourProjectID"`. For others ways of configuration see *add link*
+With this type of config you need to set an enviroment variable for WalletConnect's project ID: `NEXT_PUBLIC_WALLETCONNECT_ID="yourProjectID"`. For others ways of configuration see [Initialize the W3 Component](./init.md)
 
 :::
+
+Create your WalletConnect Project ID at <a href='https://cloud.walletconnect.com/sign-in' target='_blank' >WalletConnect Cloud</a>
 
 ### Connect to a Wallet
 
@@ -67,13 +60,13 @@ export default function Connect() {
   const { connectors, connectW3, disconnectW3, isLoading } = useConnect()
   
   return (
-    {<>
-      connectors.map((wallet) =>
-      (<button key={wallet.id} disabled={isLoading} onClick={()=>connectW3(wallet)}>
-        {wallet.name}
-      </button>)
+    <>
+      {connectors.map((wallet) =>(
+        <button key={wallet.id} disabled={isLoading} onClick={()=>connectW3(wallet)}>
+          {wallet.name}
+        </button>
+      )}
     </>
-    }
   )
 }
 ```

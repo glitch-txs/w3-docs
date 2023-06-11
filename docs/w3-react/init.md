@@ -96,6 +96,13 @@ The WalletConnect's project id can be set either via *options* or by creating an
 
 :::
 
+If you'd like to handle the modal by yourself you can listen to the uri with
+```ts
+window.addEventListener('walletconnect#uri', handleUri)
+```
+
+The uri is the value you can use to create your own QR code.
+
 There's also a built-in abstraction in case you want to use all the connectors in your application:
 
 ```tsx
