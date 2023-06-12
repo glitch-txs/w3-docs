@@ -39,7 +39,7 @@ export default function Connect() {
 - **installed**
   <br/> It's a boolean that will be true if the selected wallet is installed
 - **icon**
-  <br/> It can be undefined or the icon you passed when initializing the wallet connector, it's also declared automatically for EIP-6963 compatible wallets.
+  <br/> It can be undefined or the icon you passed when initializing the wallet class, it's also declared automatically for EIP-6963 compatible wallets.
 
 ### wait
 
@@ -68,7 +68,7 @@ Both `disconnectW3` and `connectW3` functions can be either imported directly fr
 
 ## Reactive Getters
 
-Reactive Getters are similar to React hooks but will only return one value and you don't need to disctructure them. They are reactive, so your components **will** re-render whenever their value changes.
+Reactive Getters are custom hooks that only return one value which doesn't need to be disctructured. They are reactive, so your components **will** re-render whenever their value changes.
 
 ### getW3Address
 
@@ -88,7 +88,7 @@ const chain: number = getW3Chain()
 
 ### getW3Error
 
-Will return an error message if something wrong happens, this one is meant to be displayed in the UI for the user.
+Will return an error message if something wrong happens, this one is meant to be displayed on the UI for the user.
 
 ```ts
 const errorMessage: string = getW3Error()
