@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Getting Started
 
-W3 React is an evm wallets library for React.js and its frameworks. It's inspired in <a href="https://github.com/wagmi-dev/references" target="_blank">Wagmi's references</a> with the difference that it's eth-lib agnostic. <br/>
+W3 React is an evm wallet connectors library for React.js and its frameworks. It's inspired in <a href="https://github.com/wagmi-dev/references" target="_blank">Wagmi's references</a> with the difference that it's eth-lib agnostic. <br/>
 It sets up for you a wallet connection infrastructure with a built-in store and React hooks to handle the wallet state and user's sessions.
 
 **Compatible with <a href="https://docs.ethers.org/v6/" target="_blank">ethers.js</a>, <a href="https://viem.sh/" target="_blank">viem</a> and <a href="https://docs.web3js.org/" target="_blank">Web3.js</a>**
@@ -17,7 +17,8 @@ npm i @glitch-txs/w3-react
 
 ### Init the W3 Component
 
-Select the wallets and chains you want to support. Calling `initWallets` function will invoke all wallets classes supported by W3.
+Select the wallets and chains you want to support. Calling `initWallets` function will invoke all wallet classes supported by W3.
+
 :::danger Take care
 
 Make sure props are set outside the App component.
@@ -51,7 +52,7 @@ Create your WalletConnect Project ID at <a href='https://cloud.walletconnect.com
 
 ### Connect to a Wallet
 
-Import the `useConnect` hook and map through the wallets array:
+Import the `useConnect` hook and map through the `wallets` array:
 ```tsx
 import { useConnect } from '@glitch-txs/w3-react'
 
@@ -94,7 +95,7 @@ For disconnecting you can use the `disconnectW3` function.
 
 ### Reactive Getters
 
-Reactive Getters are similar to React hooks but will only return one value and you don't need to disctructure them. They are reactive, so your components **will** re-render whenever their value changes.
+Reactive Getters are similar to React hooks but will only return one value and don't need to be disctructured. They are reactive, so your components **will** re-render whenever their value changes.
 ```tsx
 import { getW3Chain, getW3Address, connectW3, disconnectW3 } from '@glitch-txs/w3-react'
 
@@ -118,7 +119,7 @@ export default function Connect() {
 }
 ```
 
-### Use with with ethers.js, viem or web3.js
+### Use with ethers.js, viem or web3.js
 ```tsx
 import { BrowserProvider } from 'ethers'
 import { getW3Provider } from '@glitch-txs/w3-react'

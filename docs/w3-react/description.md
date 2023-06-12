@@ -30,14 +30,14 @@ export default function Connect() {
 
 ### wallets
 
-**Wallets** is an *array* that contains all the **wallet instances** that we already initialized. Each wallet instance contains the following **properties**:
+**Wallets** is an *array* that contains all the **wallets' instances** that we have already initialized. Each wallet instance is an object that contains the following **properties**:
 
 - **id**
   <br/> Unique id of the wallet
 - **name**
   <br/> The name of the wallet as string
 - **installed**
-  <br/> It's a boolean that will be true if the selected wallet is not installed
+  <br/> It's a boolean that will be true if the selected wallet is installed
 - **icon**
   <br/> It can be undefined or the icon you passed when initializing the wallet connector, it's also declared automatically for EIP-6963 compatible wallets.
 

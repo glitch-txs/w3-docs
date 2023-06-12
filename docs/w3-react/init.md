@@ -22,7 +22,7 @@ const w3props: W3Props = {
 
 ### wallets
 
-The imported wallets are javascript classes that create an instance of a specific wallet, they must be declared inside an array or by the `initWallets` function.
+The imported wallets' names are javascript classes that create an instance of a specific wallet, they can be declared inside an array or by the `initWallets` function.
 
 ```tsx
 import { W3, MetaMask, Coinbase, mainnet, W3Props } from '@glitch-txs/w3-react'
@@ -46,7 +46,7 @@ Current supported wallets:
 
 :::tip Note
 
-The Phantom class only works with evm chains.
+The Phantom instance will only work with evm chains.
 
 :::
 
@@ -61,7 +61,7 @@ const w3props: W3Props = {
 }
 ```
 
-This is going to be handy when mapping through the wallets array later.
+This is going to be handy when mapping through the `wallets` array later.
 
 :::tip Note
 
@@ -69,7 +69,7 @@ All classes' arguments are optional.
 
 :::
 
-There's a special wallet class which will take more options as argument:
+There's a special class which will take more options as argument:
 
 **WalletConnect Class**
 
@@ -110,7 +110,7 @@ window.addEventListener('walletconnect#uri', handleUri)
 
 The uri is the value you can use to create your own QR code.
 
-There's also a built-in abstraction in case you want to use all the wallet classes in your application:
+There's also a built-in abstraction in case you want to use all the classes in your application:
 
 ```tsx
 import { W3, initWallets, mainnet, W3Props } from '@glitch-txs/w3-react'
@@ -121,7 +121,7 @@ const w3props: W3Props = {
 }
 ```
 
-The `initWallets` function will return an array with all the W3 wallets initialized. You can also pass down an object with icons for each wallet.
+The `initWallets` function will return an array with all the W3 wallets initialized. You can also pass down an object with icons for each wallet's instance.
 
 ```tsx
 import { W3, initWallets, mainnet, W3Props } from '@glitch-txs/w3-react'
