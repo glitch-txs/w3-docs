@@ -119,7 +119,7 @@ export default function Connect() {
 }
 ```
 
-### Use with ethers.js, viem or web3.js
+### Use with <a href="https://docs.ethers.org/v6/" target="_blank">ethers.js</a>
 ```tsx
 import { BrowserProvider } from 'ethers'
 import { getW3Provider } from '@glitch-txs/w3-react'
@@ -134,6 +134,46 @@ export default function useEthersProvider() {
   },[w3Provider])
   
   return { provider }
+}
+```
+
+### Use with <a href="https://docs.web3js.org/" target="_blank">Web3.js</a>
+```tsx
+import Web3 from 'web3'
+import { getW3Provider } from '@glitch-txs/w3-react'
+
+export default function useWeb3Provider() {
+
+  const w3Provider = getW3Provider()
+
+  const provider = useMemo(()=>{
+    if(w3Provider)
+    return new Web3(w3Provider)
+  },[w3Provider])
+  
+  return { provider }
+}
+```
+
+### Use with <a href="https://viem.sh/" target="_blank">viem</a>
+```tsx
+import { getW3Provider } from '@glitch-txs/w3-react'
+import { createWalletClient, custom } from 'viem'
+import { mainnet } from 'viem/chains'
+
+export default function useWalletClient() {
+
+  const w3Provider = getW3Provider()
+
+  const client = useMemo(()=>{
+    if(w3Provider)
+    return createWalletClient({
+  chain: mainnet,
+  transport: custom(w3Provider)
+})
+  },[w3Provider])
+  
+  return { client }
 }
 ```
 
