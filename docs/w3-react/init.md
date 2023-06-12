@@ -8,10 +8,10 @@ sidebar_position: 2
 To initialize W3 we first need to create an object called w3props
 
 ```tsx
-import { W3, connectors, mainnet, W3Props } from '@glitch-txs/w3-react'
+import { W3, initWallets, mainnet, W3Props } from '@glitch-txs/w3-react'
 
 const w3props: W3Props = {
-  connectors: connectors(),
+  wallets: initWallets(),
   chains:[mainnet],
   onboard: true, // Optional
   EIP6963: true // Optional
@@ -20,63 +20,64 @@ const w3props: W3Props = {
 
 **Lest break this one down...**
 
-### connectors
+### wallets
 
-Connectors are javascript classes that create an instance of a specific wallet
+The imported wallets are javascript classes that create an instance of a specific wallet, they must be declared inside an array or by the `initWallets` function.
 
 ```tsx
 import { W3, MetaMask, Coinbase, mainnet, W3Props } from '@glitch-txs/w3-react'
 
 const w3props: W3Props = {
-  connectors: [new MetaMask(), new Coinbase()],
+  wallets: [new MetaMask(), new Coinbase()],
   chains:[mainnet]
 }
 ```
 
-You can select differnt connectors depending on your preference.
+You can select differnt wallets depending on your preference.
 
-Current supported connectors:
+Current supported wallets:
 
 - MetaMask
 - Coinbase
 - TrustWallet
 - WalletConnect
-- Phantom
+- Phantom (EVM)
+- EIP-6963 compatible wallets
 
 :::tip Note
 
-The Phantom connector only works with evm chains.
+The Phantom class only works with evm chains.
 
 :::
 
-Connectors must be initialized inside an array as shown in the example. They can take an **optional** argument to store the wallet's icon:
+Wallet classes can take an **optional** argument to store the wallet's icon:
 
 ```tsx
 import { W3, MetaMask, mainnet, W3Props } from '@glitch-txs/w3-react'
 
 const w3props: W3Props = {
-  connectors: [new MetaMask({ icon: 'public/icons/metamask.svg' })],
+  wallets: [new MetaMask({ icon: 'public/icons/metamask.svg' })],
   chains:[mainnet]
 }
 ```
 
-This is going to be handy when mapping through the connectors later.
+This is going to be handy when mapping through the wallets array later.
 
 :::tip Note
 
-All connectors arguments are optional.
+All classes' arguments are optional.
 
 :::
 
-There's a special connector which will take more options as argument:
+There's a special wallet class which will take more options as argument:
 
-**WalletConnect Connector**
+**WalletConnect Class**
 
 ```tsx
 import { W3, WalletConnect, mainnet, W3Props } from '@glitch-txs/w3-react'
 
 const w3props: W3Props = {
-  connectors: [
+  wallets: [
     new WalletConnect({ 
       icon: 'public/icons/walletconnect.svg',
       projectId: env.process.PROJECT_ID as string,
@@ -109,21 +110,21 @@ window.addEventListener('walletconnect#uri', handleUri)
 
 The uri is the value you can use to create your own QR code.
 
-There's also a built-in abstraction in case you want to use all the connectors in your application:
+There's also a built-in abstraction in case you want to use all the wallet classes in your application:
 
 ```tsx
-import { W3, connectors, mainnet, W3Props } from '@glitch-txs/w3-react'
+import { W3, initWallets, mainnet, W3Props } from '@glitch-txs/w3-react'
 
 const w3props: W3Props = {
-  connectors: connectors(),
+  wallets: initWallets(),
   chains:[mainnet]
 }
 ```
 
-The `connectors` function will return an array with all the W3 connectors initialized. You can also pass down an object with icons for each connector.
+The `initWallets` function will return an array with all the W3 wallets initialized. You can also pass down an object with icons for each wallet.
 
 ```tsx
-import { W3, connectors, mainnet, W3Props } from '@glitch-txs/w3-react'
+import { W3, initWallets, mainnet, W3Props } from '@glitch-txs/w3-react'
 
 const icons = {
   metamask: 'public/icons/metamask.svg',
@@ -134,14 +135,14 @@ const icons = {
 }
 
 const w3props: W3Props = {
-  connectors: connectors(icons),
+  wallets: initWallets(icons),
   chains:[mainnet]
 }
 ```
 
 :::tip Note
 
-connectors function will expect you to have the WalletConnect project ID in a .env or .env.local file as `NEXT_PUBLIC_WALLETCONNECT_ID='YourProjectId'`
+creatWallets function will expect you to have the WalletConnect project ID in a .env or .env.local file as `NEXT_PUBLIC_WALLETCONNECT_ID='YourProjectId'`
 
 :::
 
@@ -150,10 +151,10 @@ connectors function will expect you to have the WalletConnect project ID in a .e
 Import the chains you want your dapp to support and set them inside an array.
 
 ```tsx
-import { W3, connectors, mainnet, bsc, avalanche, W3Props } from '@glitch-txs/w3-react'
+import { W3, initWallets, mainnet, bsc, avalanche, W3Props } from '@glitch-txs/w3-react'
 
 const w3props: W3Props = {
-  connectors: connectors(),
+  wallets: initWallets(),
   chains:[mainnet, bsc, avalanche]
 }
 ```
@@ -200,10 +201,10 @@ type Chain = {
 Onboard is totally optional and it's set as `true` by default. When a browser wallet is not installed it will automatically open a new tab with the installation website whenever `connectW3` function is called. If you would like to handle this on your own you can set the value to `false`.
 
 ```tsx
-import { W3, connectors, mainnet, W3Props } from '@glitch-txs/w3-react'
+import { W3, initWallets, mainnet, W3Props } from '@glitch-txs/w3-react'
 
 const w3props: W3Props = {
-  connectors: connectors(),
+  wallets: initWallets(),
   chains:[mainnet],
   onboard: false
 }
@@ -211,15 +212,15 @@ const w3props: W3Props = {
 
 ### EIP6963
 
-EIP6963 will allow support for EIP-6963 compatible wallets. They are going to be detected by W3 automatically and create a new constructor for them.
+EIP6963 will allow support for EIP-6963 compatible wallets. They are going to be detected by W3 automatically and create a new class for them.
 
 EIP6963 is set as `true` by default and it's an optional parameter.
 
 ```tsx
-import { W3, connectors, mainnet, W3Props } from '@glitch-txs/w3-react'
+import { W3, initWallets, mainnet, W3Props } from '@glitch-txs/w3-react'
 
 const w3props: W3Props = {
-  connectors: connectors(),
+  wallets: initWallets(),
   chains:[mainnet],
   EIP6963: false
 }
@@ -229,10 +230,10 @@ const w3props: W3Props = {
 Once your w3props are set you can pass them to the W3 component.
 
 ```tsx
-import { W3, connectors, mainnet, W3Props } from '@glitch-txs/w3-react'
+import { W3, initWallets, mainnet, W3Props } from '@glitch-txs/w3-react'
 
 const w3props: W3Props = {
-  connectors: connectors(),
+  wallets: initWallets(),
   chains:[mainnet]
 }
 

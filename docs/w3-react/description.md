@@ -6,19 +6,19 @@ sidebar_position: 3
 
 ## useConnect Hook
 
-To create a connection component you can use `useConnect` hook. It returns two reactive values: `ìsLoading` and `connectors`, and two functions: `connectW3` and `disconnectW3`.
+To create a connection component you can use `useConnect` hook. It returns two reactive values: `wait` and `wallets`, and two functions: `connectW3` and `disconnectW3`.
 
 ```tsx
 import { useConnect } from '@glitch-txs/w3-react'
 
 export default function Connect() {
 
-  const { connectors, isLoading, connectW3, disconnectW3 } = useConnect()
+  const { wallets, wait, connectW3, disconnectW3 } = useConnect()
   
   return (
     <>
-      {connectors.map((wallet) =>(
-      <button key={wallet.id} disabled={isLoading} onClick={()=>connectW3(wallet)}>
+      {wallets.map((wallet) =>(
+      <button key={wallet.id} disabled={wait.state} onClick={()=>connectW3(wallet)}>
         <Image width={44} height={44} src={wallet.icon} alt={wallet.name} />
         {wallet.name}
       </button>
@@ -28,9 +28,9 @@ export default function Connect() {
 }
 ```
 
-### connectors
+### wallets
 
-**Connectors** is an *array* that contains all the **wallet instances** that we already initialized. Each wallet instance contains the following **properties**:
+**Wallets** is an *array* that contains all the **wallet instances** that we already initialized. Each wallet instance contains the following **properties**:
 
 - **id**
   <br/> Unique id of the wallet
@@ -41,16 +41,20 @@ export default function Connect() {
 - **icon**
   <br/> It can be undefined or the icon you passed when initializing the wallet connector, it's also declared automatically for EIP-6963 compatible wallets.
 
-### isLoading
+### wait
 
-A boolean value that will be `true` if:
+An object with two properties:
 
-- The W3 library is checking the user address and chain id on the first website's load.
-- The user is in the connection process. Which starts when calling `connectW3` function and finishes whenever the user rejects the connection request or accepts it.
+- **state** <br/>
+   A boolean that will be true if
+    - The W3 library is checking the user address and chain id on the first website's load. (Initializing)
+    - The user is in the connection process, which starts when calling `connectW3` function and finishes whenever the user rejects the connection request or accepts it. (Connecting)
+    - The user is disconnecting from WalletConnect or Coinbase wallet. (Disconnecting)
+- **reason** <br/> A string with the following possible outputs: `Connecting`, `Disconnecting`, `Initializing` or an empty string.
 
 ### connectW3
 
-It's a function that takes as argument either a string with the wallet's name or the wallet instance itself (the later one is recommended when mapping through the connectors).
+It's a function that takes as argument either a string with the wallet's name or the wallet instance itself (the later one is recommended when mapping through the wallets).
 
 ### disconnectW3
 

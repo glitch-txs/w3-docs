@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Getting Started
 
-W3 React is an evm wallet connectors library for React.js and its frameworks. It's inspired in <a href="https://github.com/wagmi-dev/references" target="_blank">Wagmi's references</a> with the difference that it's eth-lib agnostic. <br/>
+W3 React is an evm wallets library for React.js and its frameworks. It's inspired in <a href="https://github.com/wagmi-dev/references" target="_blank">Wagmi's references</a> with the difference that it's eth-lib agnostic. <br/>
 It sets up for you a wallet connection infrastructure with a built-in store and React hooks to handle the wallet state and user's sessions.
 
 **Compatible with <a href="https://docs.ethers.org/v6/" target="_blank">ethers.js</a>, <a href="https://viem.sh/" target="_blank">viem</a> and <a href="https://docs.web3js.org/" target="_blank">Web3.js</a>**
@@ -17,17 +17,17 @@ npm i @glitch-txs/w3-react
 
 ### Init the W3 Component
 
-Select the connectors and chains you want to support. Calling `connectors` function will invoke all connectors.
+Select the wallets and chains you want to support. Calling `initWallets` function will invoke all wallets classes supported by W3.
 :::danger Take care
 
 Make sure props are set outside the App component.
 
 :::
 ```tsx
-import { W3, connectors, mainnet, W3Props } from '@glitch-txs/w3-react'
+import { W3, initWallets, mainnet, W3Props } from '@glitch-txs/w3-react'
 
 const w3props: W3Props = {
-  connectors: connectors(),
+  wallets: initWallets(),
   chains:[mainnet]
 }
 
@@ -51,18 +51,18 @@ Create your WalletConnect Project ID at <a href='https://cloud.walletconnect.com
 
 ### Connect to a Wallet
 
-Import the `useConnect` hook and map through the connectors:
+Import the `useConnect` hook and map through the wallets array:
 ```tsx
 import { useConnect } from '@glitch-txs/w3-react'
 
 export default function Connect() {
 
-  const { connectors, connectW3, disconnectW3, isLoading } = useConnect()
+  const { wallets, connectW3, disconnectW3, wait } = useConnect()
   
   return (
     <>
-      {connectors.map((wallet) =>(
-        <button key={wallet.id} disabled={isLoading} onClick={()=>connectW3(wallet)}>
+      {wallets.map((wallet) =>(
+        <button key={wallet.id} disabled={wait.state} onClick={()=>connectW3(wallet)}>
           {wallet.name}
         </button>
       )}
@@ -108,7 +108,7 @@ export default function Connect() {
     <div>
       {address ?
       <button onClick={disconnectW3} >Disconnect</button> :
-      <button disable={isLoading} onClick={()=>connectW3('MetaMask')} >Connect to MetaMask</button>
+      <button onClick={()=>connectW3('MetaMask')} >Connect to MetaMask</button>
       }
       Chain ID: {chain}
       <br/>
@@ -136,7 +136,7 @@ export default function useEthersProvider() {
 }
 ```
 
-### Current supported connectors
+### Current supported wallets
 1. MetaMask
 2. Coinbase
 3. WalletConnect
