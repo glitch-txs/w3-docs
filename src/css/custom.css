@@ -35,7 +35,7 @@
 header h1{
   opacity: 0;
   animation-name: show;
-  animation-duration: 4s;
+  animation-duration: 2s;
   animation-fill-mode: forwards;
   animation-timing-function: ease;
 }
@@ -45,7 +45,7 @@ header p{
   animation-timing-function: ease-out;
   animation-name: show;
   animation-delay: 0.3s;
-  animation-duration: 4s;
+  animation-duration: 2s;
   animation-fill-mode: forwards;
 }
 
@@ -54,7 +54,7 @@ header p{
   animation-timing-function: ease-out;
   animation-name: show;
   animation-delay: 0.3s;
-  animation-duration: 4s;
+  animation-duration: 2s;
   animation-fill-mode: forwards;
 }
 
