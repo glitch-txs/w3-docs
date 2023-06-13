@@ -9,6 +9,15 @@ It sets up for you a wallet connection infrastructure with a built-in store and 
 
 **Compatible with <a href="https://docs.ethers.org/v6/" target="_blank">ethers.js</a>, <a href="https://viem.sh/" target="_blank">viem</a> and <a href="https://docs.web3js.org/" target="_blank">Web3.js</a>**
 
+
+### Current supported wallets
+- MetaMask
+- Coinbase
+- WalletConnect
+- Trust Wallet
+- Phantom (EVM)
+- EIP-6963 compatible wallets
+
 ### Install
 
 ```bash npm2yarn
@@ -177,14 +186,6 @@ export default function useWalletClient() {
   return { client }
 }
 ```
-
-### Current supported wallets
-1. MetaMask
-2. Coinbase
-3. WalletConnect
-4. Trust Wallet
-5. Phantom (EVM)
-6. EIP-6963 compatible wallets
 
 ### Create a custom chain
 
