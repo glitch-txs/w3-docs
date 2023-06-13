@@ -95,7 +95,8 @@ For disconnecting you can use the `disconnectW3` function.
 
 ### Reactive Getters
 
-Reactive Getters are similar to React hooks but will only return one value and don't need to be disctructured. They are reactive, so your components **will** re-render whenever their value changes.
+Reactive Getters are custom hooks that only return one value which doesn't need to be disctructured. They are reactive, so your components **will** re-render whenever their value changes.
+
 ```tsx
 import { getW3Chain, getW3Address, connectW3, disconnectW3 } from '@glitch-txs/w3-react'
 
