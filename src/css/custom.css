@@ -32,6 +32,41 @@
   background-clip: text;
 }
 
+header h1{
+  opacity: 0;
+  animation-name: show;
+  animation-duration: 4s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+}
+
+header p{
+  opacity: 0;
+  animation-timing-function: ease-out;
+  animation-name: show;
+  animation-delay: 0.3s;
+  animation-duration: 4s;
+  animation-fill-mode: forwards;
+}
+
+.button{
+  opacity: 0;
+  animation-timing-function: ease-out;
+  animation-name: show;
+  animation-delay: 0.3s;
+  animation-duration: 4s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes show {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #25c2a0;

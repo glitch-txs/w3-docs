@@ -6,6 +6,7 @@ import Layout from '@theme/Layout';
 
 import styles from './index.module.css';
 import Gradients from '../components/gradients/Gradients';
+import Glitch from '../components/glitch/Glitch';
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
@@ -14,6 +15,7 @@ function HomepageHeader() {
       <div className="container">
         <h1 className="hero__title">{siteConfig.title}</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
+        
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
@@ -22,7 +24,7 @@ function HomepageHeader() {
           </Link>
         </div>
       </div>
-      <div className={styles.logo}>Glitch.</div>
+      <div className={styles.logo}><Glitch>Glitch.</Glitch></div>
     </header>
   );
 }

@@ -28,14 +28,14 @@
   font-weight: 800;
   font-family: 'Untitled Serif';
   position: absolute;
-  bottom: 20px;
+  bottom: 0px;
   right: 20px;
 
   transition: text-shadow 0.3s ease;
 }
 
 .logo:hover{
-  text-shadow: 0 0 5px var(--white);
+  text-shadow: 0 0 1px var(--white);
   cursor: none;
 }
 
