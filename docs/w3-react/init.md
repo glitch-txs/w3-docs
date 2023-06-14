@@ -57,7 +57,7 @@ Wallet classes can take an **optional** argument to store the wallet's icon:
 import { W3, MetaMask, mainnet, W3Props } from '@glitch-txs/w3-react'
 
 const w3props: W3Props = {
-  wallets: [new MetaMask({ icon: 'public/icons/metamask.svg' })],
+  wallets: [new MetaMask({ icon: '/icons/metamask.svg' })],
   chains:[mainnet]
 }
 ```
@@ -80,7 +80,7 @@ import { W3, WalletConnect, mainnet, W3Props } from '@glitch-txs/w3-react'
 const w3props: W3Props = {
   wallets: [
     new WalletConnect({ 
-      icon: 'public/icons/walletconnect.svg',
+      icon: '/icons/walletconnect.svg',
       projectId: env.process.PROJECT_ID as string,
       showQrModal: true, //true by default
       qrModalOptions: {
@@ -128,11 +128,11 @@ The `initWallets` function will return an array with all the W3 wallets initiali
 import { W3, initWallets, mainnet, W3Props } from '@glitch-txs/w3-react'
 
 const icons = {
-  metamask: 'public/icons/metamask.svg',
-  coinbase: 'public/icons/coinbase.svg',
-  trustwallet: 'public/icons/trustwallet.svg',
-  phantom:'public/icons/phantom.svg',
-  walletconnect: 'public/icons/walletconnect.svg'
+  metamask: '/icons/metamask.svg',
+  coinbase: '/icons/coinbase.svg',
+  trustwallet: '/icons/trustwallet.svg',
+  phantom:'/icons/phantom.svg',
+  walletconnect: '/icons/walletconnect.svg'
 }
 
 const w3props: W3Props = {
