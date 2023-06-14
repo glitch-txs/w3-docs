@@ -147,6 +147,33 @@ createWallets function will expect you to have the WalletConnect project ID in a
 
 :::
 
+**Custom Wallet - Injected**
+
+There's a default wallet class you can customize:
+```tsx
+import { W3, Injected, mainnet, W3Props } from '@glitch-txs/w3-react'
+
+const w3props: W3Props = {
+  wallets: [new Injected({ 
+    id: 'customwallet',
+    name: 'My Wallet',
+    icon: 'icons/mywallet.svg'
+    install: 'https://installmywallet.com', // the website to open on onboard
+    deeplink: 'https://mywallet.mobile', // The deeplink to open on mobile devices
+    getProvider: ()=>{
+      return window.myWalletProvider
+    }, // A function that returns the wallet provider or undefined
+   })],
+  chains:[mainnet]
+}
+```
+:::tip Note
+
+- All Injected parameters are optional.
+- Injected class is not returned by the `initWallets` function.
+
+:::
+
 ### Chains
 
 Import the chains you want your dapp to support and set them inside an array.
