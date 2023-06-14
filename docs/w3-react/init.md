@@ -143,7 +143,7 @@ const w3props: W3Props = {
 
 :::tip Note
 
-creatWallets function will expect you to have the WalletConnect project ID in a .env or .env.local file as `NEXT_PUBLIC_WALLETCONNECT_ID='YourProjectId'`
+createWallets function will expect you to have the WalletConnect project ID in a .env or .env.local file as `NEXT_PUBLIC_WALLETCONNECT_ID='YourProjectId'`
 
 :::
 
