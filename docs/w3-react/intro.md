@@ -93,15 +93,12 @@ export default function UserInfo() {
   
   const address = getW3Address()
   const chain = getW3Chain()
-  const errorMessage = getW3Error()
   
   return (
     <div>
       address: {address}
       <br/>
       Chain ID: {chain}
-      <br/>
-      {errorMessage}
     </div>
   )
 }
