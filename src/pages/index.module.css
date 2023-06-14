@@ -28,7 +28,7 @@
   font-weight: 800;
   font-family: 'Untitled Serif';
   position: absolute;
-  bottom: 0px;
+  bottom: 20px;
   right: 20px;
 
   transition: text-shadow 0.3s ease;
