@@ -42,6 +42,7 @@ Current supported wallets:
 - TrustWallet
 - WalletConnect
 - Phantom (EVM)
+- Injected - Custom Wallet
 - EIP-6963 compatible wallets
 
 :::tip Note
