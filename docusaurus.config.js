@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'W3',
-  tagline: 'Wallet Connectors Library',
+  tagline: 'EVM Wallet Connectors Library',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -63,7 +63,7 @@ const config = {
             label: 'DOCS',
           },
           {
-            href: 'https://github.com/glitch-txs/w3',
+            href: 'https://github.com/glitch-txs/w3evm',
             label: 'GitHub',
             position: 'right',
           },
