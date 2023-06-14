@@ -8,7 +8,7 @@ sidebar_position: 2
 To initialize W3 we first need to create an object called w3props
 
 ```tsx
-import { W3, initWallets, mainnet, W3Props } from 'w3evm-react'
+import { W3, initWallets, mainnet, W3Props } from 'w3-evm-react'
 
 const w3props: W3Props = {
   wallets: initWallets(),
@@ -25,7 +25,7 @@ const w3props: W3Props = {
 The imported wallets' names are javascript classes that create an instance of a specific wallet, they can be declared inside an array or by the `initWallets` function.
 
 ```tsx
-import { W3, MetaMask, Coinbase, mainnet, W3Props } from 'w3evm-react'
+import { W3, MetaMask, Coinbase, mainnet, W3Props } from 'w3-evm-react'
 
 const w3props: W3Props = {
   wallets: [new MetaMask(), new Coinbase()],
@@ -54,7 +54,7 @@ The Phantom instance will only work with evm chains.
 Wallet classes can take an **optional** argument to store the wallet's icon:
 
 ```tsx
-import { W3, MetaMask, mainnet, W3Props } from 'w3evm-react'
+import { W3, MetaMask, mainnet, W3Props } from 'w3-evm-react'
 
 const w3props: W3Props = {
   wallets: [new MetaMask({ icon: '/icons/metamask.svg' })],
@@ -75,7 +75,7 @@ There's a special class which will take more options as argument:
 **WalletConnect Class**
 
 ```tsx
-import { W3, WalletConnect, mainnet, W3Props } from 'w3evm-react'
+import { W3, WalletConnect, mainnet, W3Props } from 'w3-evm-react'
 
 const w3props: W3Props = {
   wallets: [
@@ -114,7 +114,7 @@ The uri is the value you can use to create your own QR code.
 There's also a built-in abstraction in case you want to use all the classes in your application:
 
 ```tsx
-import { W3, initWallets, mainnet, W3Props } from 'w3evm-react'
+import { W3, initWallets, mainnet, W3Props } from 'w3-evm-react'
 
 const w3props: W3Props = {
   wallets: initWallets(),
@@ -125,7 +125,7 @@ const w3props: W3Props = {
 The `initWallets` function will return an array with all the W3 wallets initialized. You can also pass down an object with icons for each wallet's instance.
 
 ```tsx
-import { W3, initWallets, mainnet, W3Props } from 'w3evm-react'
+import { W3, initWallets, mainnet, W3Props } from 'w3-evm-react'
 
 const icons = {
   metamask: '/icons/metamask.svg',
@@ -151,7 +151,7 @@ createWallets function will expect you to have the WalletConnect project ID in a
 
 There's a default wallet class you can customize:
 ```tsx
-import { W3, Injected, mainnet, W3Props } from 'w3evm-react'
+import { W3, Injected, mainnet, W3Props } from 'w3-evm-react'
 
 const w3props: W3Props = {
   wallets: [new Injected({ 
@@ -177,7 +177,7 @@ const w3props: W3Props = {
 Import the chains you want your dapp to support and set them inside an array.
 
 ```tsx
-import { W3, initWallets, mainnet, bsc, avalanche, W3Props } from 'w3evm-react'
+import { W3, initWallets, mainnet, bsc, avalanche, W3Props } from 'w3-evm-react'
 
 const w3props: W3Props = {
   wallets: initWallets(),
@@ -227,7 +227,7 @@ type Chain = {
 Onboard is totally optional and it's set as `true` by default. When a browser wallet is not installed it will automatically open a new tab with the installation website whenever `connectW3` function is called. If you would like to handle this on your own you can set the value to `false`.
 
 ```tsx
-import { W3, initWallets, mainnet, W3Props } from 'w3evm-react'
+import { W3, initWallets, mainnet, W3Props } from 'w3-evm-react'
 
 const w3props: W3Props = {
   wallets: initWallets(),
@@ -243,7 +243,7 @@ EIP6963 will allow support for EIP-6963 compatible wallets. They are going to be
 EIP6963 is set as `true` by default and it's an optional parameter.
 
 ```tsx
-import { W3, initWallets, mainnet, W3Props } from 'w3evm-react'
+import { W3, initWallets, mainnet, W3Props } from 'w3-evm-react'
 
 const w3props: W3Props = {
   wallets: initWallets(),
@@ -256,7 +256,7 @@ const w3props: W3Props = {
 Once your w3props are set you can pass them to the W3 component.
 
 ```tsx
-import { W3, initWallets, mainnet, W3Props } from 'w3evm-react'
+import { W3, initWallets, mainnet, W3Props } from 'w3-evm-react'
 
 const w3props: W3Props = {
   wallets: initWallets(),
