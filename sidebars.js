@@ -25,7 +25,6 @@ const sidebars = {
         'w3-react/intro',
         'w3-react/init',
         'w3-react/description',
-        'w3-react/hydration',
         'w3-react/request'
       ],
     },
