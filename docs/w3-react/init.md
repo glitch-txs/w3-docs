@@ -33,7 +33,7 @@ const w3props: W3Props = {
 }
 ```
 
-You can select differnt wallets depending on your preference.
+You can select different wallets depending on your preference.
 
 Current supported wallets:
 
