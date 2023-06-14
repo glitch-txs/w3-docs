@@ -35,7 +35,7 @@
 }
 
 .logo:hover{
-  text-shadow: 0 0 1px var(--white);
+  text-shadow: 0 0 4px var(--white);
   cursor: none;
 }
 

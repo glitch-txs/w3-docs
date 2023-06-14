@@ -24,7 +24,7 @@ function HomepageHeader() {
           </Link>
         </div>
       </div>
-      <div className={styles.logo}><Glitch>Glitch.</Glitch></div>
+      <div className={styles.logo}>Glitch.</div>
     </header>
   );
 }
