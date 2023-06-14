@@ -82,35 +82,14 @@ export default function Connect() {
 }
 ```
 
-You can also set a connection to a single wallet by using the wallet's name as argument of the `connectW3` function:
-
-:::tip NOTE
-
-You can also import `connectW3` and `disconnectW3` functions directly from the library
-
-:::
-
-```tsx
-import { connectW3 } from 'w3-evm-react'
-
-export default function Connect() {
-  return (
-    <div>
-      <button onClick={()=>connectW3('MetaMask')} >Connect to MetaMask</button>
-    </div>
-  )
-}
-```
-For disconnecting you can use the `disconnectW3` function.
-
 ### Reactive Getters
 
 Reactive Getters are custom hooks that only return one value which doesn't need to be disctructured. They are reactive, so your components **will** re-render whenever their value changes.
 
 ```tsx
-import { getW3Chain, getW3Address, connectW3, disconnectW3 } from 'w3-evm-react'
+import { getW3Chain, getW3Address } from 'w3-evm-react'
 
-export default function Connect() {
+export default function UserInfo() {
   
   const address = getW3Address()
   const chain = getW3Chain()
@@ -118,10 +97,8 @@ export default function Connect() {
   
   return (
     <div>
-      {address ?
-      <button onClick={disconnectW3} >Disconnect</button> :
-      <button onClick={()=>connectW3('MetaMask')} >Connect to MetaMask</button>
-      }
+      address: {address}
+      <br/>
       Chain ID: {chain}
       <br/>
       {errorMessage}
