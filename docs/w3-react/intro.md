@@ -24,7 +24,7 @@ It sets up for you a wallet connection infrastructure with a built-in store and 
 npm i w3-evm-react
 ```
 
-### Init the W3 Component
+### Init W3
 
 Select the wallets and chains you want to support. Calling `initWallets` function will invoke all wallet classes supported by W3.
 

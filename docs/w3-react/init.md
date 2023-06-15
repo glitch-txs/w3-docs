@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 ---
-# Initialize the W3 Component
+# Initialize W3
 
 ## W3 Properties
 
