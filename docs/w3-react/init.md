@@ -5,17 +5,17 @@ sidebar_position: 2
 
 ## W3 Properties
 
-To initialize W3 we first need to create an object called w3props
+To initialize W3 we first need to create the w3props calling `initW3`.
 
 ```tsx
-import { W3, initWallets, mainnet, W3Props } from 'w3-evm-react'
+import { W3, initWallets, mainnet, initW3 } from 'w3-evm-react'
 
-const w3props: W3Props = {
+const w3props = initW3({
   wallets: initWallets(),
   chains:[mainnet],
   onboard: true, // Optional
   EIP6963: true // Optional
-}
+})
 ```
 
 **Lest break this one down...**
@@ -25,12 +25,12 @@ const w3props: W3Props = {
 The imported wallets' names are javascript classes that create an instance of a specific wallet, they can be declared inside an array or by the `initWallets` function.
 
 ```tsx
-import { W3, MetaMask, Coinbase, mainnet, W3Props } from 'w3-evm-react'
+import { W3, MetaMask, Coinbase, mainnet, initW3 } from 'w3-evm-react'
 
-const w3props: W3Props = {
+const w3props = initW3({
   wallets: [new MetaMask(), new Coinbase()],
   chains:[mainnet]
-}
+})
 ```
 
 You can select different wallets depending on your preference.
@@ -54,12 +54,12 @@ The Phantom instance will only work with evm chains.
 Wallet classes can take an **optional** argument to store the wallet's icon:
 
 ```tsx
-import { W3, MetaMask, mainnet, W3Props } from 'w3-evm-react'
+import { W3, MetaMask, mainnet, initW3 } from 'w3-evm-react'
 
-const w3props: W3Props = {
+const w3props = initW3({
   wallets: [new MetaMask({ icon: '/icons/metamask.svg' })],
   chains:[mainnet]
-}
+})
 ```
 
 This is going to be handy when mapping through the `wallets` array later.
@@ -75,9 +75,9 @@ There's a special class which will take more options as argument:
 **WalletConnect Class**
 
 ```tsx
-import { W3, WalletConnect, mainnet, W3Props } from 'w3-evm-react'
+import { W3, WalletConnect, mainnet, initW3 } from 'w3-evm-react'
 
-const w3props: W3Props = {
+const w3props = initW3({
   wallets: [
     new WalletConnect({ 
       icon: '/icons/walletconnect.svg',
@@ -89,7 +89,7 @@ const w3props: W3Props = {
    })
   ],
   chains:[mainnet]
-}
+})
 ```
 
 :::tip Note
@@ -114,18 +114,18 @@ The uri is the value you can use to create your own QR code.
 There's also a built-in abstraction in case you want to use all the classes in your application:
 
 ```tsx
-import { W3, initWallets, mainnet, W3Props } from 'w3-evm-react'
+import { W3, initWallets, mainnet, initW3 } from 'w3-evm-react'
 
-const w3props: W3Props = {
+const w3props = initW3({
   wallets: initWallets(),
   chains:[mainnet]
-}
+})
 ```
 
 The `initWallets` function will return an array with all the W3 wallets initialized. You can also pass down an object with icons for each wallet's instance.
 
 ```tsx
-import { W3, initWallets, mainnet, W3Props } from 'w3-evm-react'
+import { W3, initWallets, mainnet, initW3 } from 'w3-evm-react'
 
 const icons = {
   metamask: '/icons/metamask.svg',
@@ -135,10 +135,10 @@ const icons = {
   walletconnect: '/icons/walletconnect.svg'
 }
 
-const w3props: W3Props = {
+const w3props = initW3({
   wallets: initWallets(icons),
   chains:[mainnet]
-}
+})
 ```
 
 :::tip Note
@@ -151,9 +151,9 @@ createWallets function will expect you to have the WalletConnect project ID in a
 
 There's a default wallet class you can customize:
 ```tsx
-import { W3, Injected, mainnet, W3Props } from 'w3-evm-react'
+import { W3, Injected, mainnet, initW3 } from 'w3-evm-react'
 
-const w3props: W3Props = {
+const w3props = initW3({
   wallets: [new Injected({ 
     id: 'customwallet',
     name: 'My Wallet',
@@ -163,7 +163,7 @@ const w3props: W3Props = {
     getProvider: ()=>window.myWalletProvider, // A function that returns the wallet's provider or undefined
    })],
   chains:[mainnet]
-}
+})
 ```
 :::tip Note
 
@@ -177,12 +177,12 @@ const w3props: W3Props = {
 Import the chains you want your dapp to support and set them inside an array.
 
 ```tsx
-import { W3, initWallets, mainnet, bsc, avalanche, W3Props } from 'w3-evm-react'
+import { W3, initWallets, mainnet, bsc, avalanche, initW3 } from 'w3-evm-react'
 
-const w3props: W3Props = {
+const w3props = initW3({
   wallets: initWallets(),
   chains:[mainnet, bsc, avalanche]
-}
+})
 ```
 :::tip Feature
 
@@ -227,13 +227,13 @@ type Chain = {
 Onboard is totally optional and it's set as `true` by default. When a browser wallet is not installed it will automatically open a new tab with the installation website whenever `connectW3` function is called. If you would like to handle this on your own you can set the value to `false`.
 
 ```tsx
-import { W3, initWallets, mainnet, W3Props } from 'w3-evm-react'
+import { W3, initWallets, mainnet, initW3 } from 'w3-evm-react'
 
-const w3props: W3Props = {
+const w3props = initW3({
   wallets: initWallets(),
   chains:[mainnet],
   onboard: false
-}
+})
 ```
 
 ### EIP6963
@@ -243,25 +243,25 @@ EIP6963 will allow support for EIP-6963 compatible wallets. They are going to be
 EIP6963 is set as `true` by default and it's an optional parameter.
 
 ```tsx
-import { W3, initWallets, mainnet, W3Props } from 'w3-evm-react'
+import { W3, initWallets, mainnet, initW3 } from 'w3-evm-react'
 
-const w3props: W3Props = {
+const w3props = initW3({
   wallets: initWallets(),
   chains:[mainnet],
   EIP6963: false
-}
+})
 ```
 
 ## W3 Component
 Once your w3props are set you can pass them to the W3 component.
 
 ```tsx
-import { W3, initWallets, mainnet, W3Props } from 'w3-evm-react'
+import { W3, initWallets, mainnet, initW3 } from 'w3-evm-react'
 
-const w3props: W3Props = {
+const w3props = initW3({
   wallets: initWallets(),
   chains:[mainnet]
-}
+})
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

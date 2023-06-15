@@ -7,9 +7,6 @@ sidebar_position: 1
 W3 React is an evm wallet connectors library for React.js and its frameworks. It's inspired by <a href="https://github.com/wagmi-dev/references" target="_blank">Wagmi's references</a> with the difference that it's eth-lib agnostic. (*Eth-lib* for ethereum libraries such as ethers.js, viem or web3.js). <br/>
 It sets up for you a wallet connection infrastructure with a built-in store and React hooks to handle the wallet state and user's sessions.
 
-**Compatible with <a href="https://docs.ethers.org/v6/" target="_blank">ethers.js</a>, <a href="https://viem.sh/" target="_blank">viem</a> and <a href="https://docs.web3js.org/" target="_blank">Web3.js</a>**
-
-
 ### Current supported wallets
 - MetaMask
 - Coinbase
@@ -18,6 +15,8 @@ It sets up for you a wallet connection infrastructure with a built-in store and 
 - Phantom (EVM)
 - Injected - Custom Wallet
 - EIP-6963 compatible wallets
+
+**Compatible with <a href="https://docs.ethers.org/v6/" target="_blank">ethers.js</a>, <a href="https://viem.sh/" target="_blank">viem</a> and <a href="https://docs.web3js.org/" target="_blank">Web3.js</a>**
 
 ### Install
 
@@ -35,12 +34,12 @@ Make sure props are set outside the App component.
 
 :::
 ```tsx
-import { W3, initWallets, mainnet, W3Props } from 'w3-evm-react'
+import { W3, initWallets, mainnet, initW3 } from 'w3-evm-react'
 
-const w3props: W3Props = {
+const w3props = initW3({
   wallets: initWallets(),
   chains:[mainnet]
-}
+})
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
