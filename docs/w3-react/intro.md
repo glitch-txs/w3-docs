@@ -160,20 +160,3 @@ export default function useWalletClient() {
   return { client }
 }
 ```
-
-### Create a custom chain
-
-```ts
-type Chain = {
-  chainId:`0x${string}`
-  chainName:string
-  nativeCurrency?:{
-    name:string
-    symbol:string
-    decimals:number
-  }
-  rpcUrls: string[]
-  blockExplorerUrls?:string[]
-  iconUrls?:string[]
-}
-```
