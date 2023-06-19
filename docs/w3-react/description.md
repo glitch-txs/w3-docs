@@ -22,7 +22,7 @@ export default function Connect() {
         <Image width={44} height={44} src={wallet.icon} alt={wallet.name} />
         {wallet.name}
       </button>
-      })
+      ))}
     </>
   )
 }
