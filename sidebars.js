@@ -36,6 +36,13 @@ const sidebars = {
         'w3-core/intro',
       ],
     },
+    {
+      type: 'category',
+      label: 'WalletConnect Legacy Modal',
+      items: [
+        'w3-modal-legacy/intro',
+      ],
+    },
   ],
 };
 
