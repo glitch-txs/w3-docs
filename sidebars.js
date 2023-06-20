@@ -40,7 +40,7 @@ const sidebars = {
       type: 'category',
       label: 'WalletConnect Legacy Modal',
       items: [
-        'w3-modal-legacy/intro',
+        'w3modal-legacy/intro',
       ],
     },
   ],
