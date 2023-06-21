@@ -20,8 +20,8 @@ Make sure props are set outside the App component.
 
 :::
 ```tsx
-import { W3, initWallets, mainnet, initW3 } from 'w3-evm-react'
-import { initModalWallets, W3modal } from 'walletconnect-legacy-ui'
+import { W3, mainnet, initW3 } from 'w3-evm-react'
+import { initModalWallets, W3Modal } from 'walletconnect-legacy-ui'
 
 const w3props = initW3({
   wallets: initModalWallets(),
@@ -32,7 +32,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <W3 {...w3props} />
-      <W3modal/>
+      <W3Modal/>
       <Component {...pageProps} />
     </>
   )
