@@ -4,6 +4,8 @@ WalletConnect legacy Modal is a wallets modal library built on top of W3 which i
 
 **Compatible with <a href="https://docs.ethers.org/v6/" target="_blank">ethers.js</a>, <a href="https://viem.sh/" target="_blank">viem</a> and <a href="https://docs.web3js.org/" target="_blank">Web3.js</a>**
 
+Check example: https://walletconnec-v2-legacy-ui.vercel.app/
+
 ### Install
 
 ```bash npm2yarn
