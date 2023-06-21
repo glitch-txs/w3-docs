@@ -52,6 +52,8 @@ import { disconnectW3, getW3Address } from 'w3-evm-react'
 
 export default function Connect() {
   
+  const address = getW3Address()
+  
   return (
     <div>
       {address ?
