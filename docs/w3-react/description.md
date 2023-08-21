@@ -13,14 +13,14 @@ import { useConnect } from 'w3-evm-react'
 
 export default function Connect() {
 
-  const { wallets, wait, connectW3, disconnectW3 } = useConnect()
+  const { connectors, wait, connectW3, disconnectW3 } = useConnect()
   
   return (
     <>
-      {wallets.map((wallet) =>(
-      <button key={wallet.id} disabled={Boolean(wait)} onClick={()=>connectW3(wallet)}>
-        <img src={wallet.icon} alt={wallet.name} />
-        {wallet.name}
+      {connectors.map((connector) =>(
+      <button key={connector.id} disabled={Boolean(wait)} onClick={()=>connectW3({ connector })}>
+        <img src={connector.icon} alt={connector.name} />
+        {connector.name}
       </button>
       ))}
     </>
@@ -52,13 +52,13 @@ type Wait = 'Initializing' | 'Connecting' | 'Disconnecting' | 'Loading' | undefi
 
 ### connectW3
 
-It's a function that takes as argument a wallet instance (connector).
+It's a function that takes as argument a wallet instance (connector) and optionally a chain (3038 compliant chain or a chain id).
 
 ### disconnectW3
 
 It's a function that doesn't require any arguments and will clear the user's session state.
 
-Notice there's no actual way of disconnecting an extension wallet from a dapp unless the user disconnects it directly from the extention. This function will clear the session's state in the dapp but the wallet will still be shown as connected on the extension's UI.
+Notice there's no actual way of disconnecting an extension wallet from a dapp unless the user disconnects it directly from the extension. This function will clear the session's state in the dapp but the wallet will still be shown as connected on the extension's UI.
 
 :::tip Note
 

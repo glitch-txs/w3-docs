@@ -64,10 +64,10 @@ export default function Connect() {
   
   return (
     <>
-      {wallets.map((wallet) =>(
-      <button key={wallet.id} disabled={Boolean(wait)} onClick={()=>connectW3(wallet)}>
-        <img src={wallet.icon} alt={wallet.name} />
-        {wallet.name}
+      {connectors.map((connector) =>(
+      <button key={connector.id} disabled={Boolean(wait)} onClick={()=>connectW3({ connector })}>
+        <img src={connector.icon} alt={connector.name} />
+        {connector.name}
       </button>
       ))}
     </>
