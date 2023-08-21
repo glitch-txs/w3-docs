@@ -4,22 +4,27 @@ sidebar_position: 5
 
 # SSR and Hydration
 
-This section is for an advance feature. If you're following the rest of the guide, you should **not** face hydration errors.
-
-## Hydration
-
-If you are **not** using SSR or want to deal with hydration mismatch errors to get a faster first load of W3, this section is for you
+If you are **not** using SSR or want to deal with hydration mismatch errors to get a faster first load of W3, you can ignore the SSR flag and not use the W3 component.
 
 1. Add the `hydration` flag on init as `false`
 2. Remove the W3 component
 
 ```tsx
-import { initWallets, mainnet, initW3 } from 'w3-evm-react'
+import { initW3, Injected, WalletConnect } from 'w3-evm-react'
+
+/* Icons */
+import walletconnect from 'public/walletconnect.svg'
+import wallet from 'public/extension-wallet.png'
+
+/* WalletConnect Project Id */
+const projectId = 'YOUR_PROJECT_ID'
 
 initW3({
-  wallets: initWallets(),
-  chains:[mainnet],
-  hydration: false
+  connectors: [
+    new Injected({ icon: wallet }), 
+    new WalletConnect({ projectId, icon: walletconnect, showQrModal: true })
+  ],
+  chains:[1, 137],
 })
 
 export default function App({ Component, pageProps }: AppProps) {

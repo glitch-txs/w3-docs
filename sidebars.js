@@ -25,8 +25,7 @@ const sidebars = {
         'w3-react/intro',
         'w3-react/init',
         'w3-react/description',
-        'w3-react/hydration',
-        'w3-react/request'
+        'w3-react/hydration'
       ],
     },
     {
@@ -34,13 +33,6 @@ const sidebars = {
       label: 'W3 Vanilla',
       items: [
         'w3-core/intro',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'WalletConnect Legacy Modal',
-      items: [
-        'w3modal-legacy/intro',
       ],
     },
   ],
