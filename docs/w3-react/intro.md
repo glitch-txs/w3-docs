@@ -10,8 +10,12 @@ It sets up for you a wallet connection infrastructure with a built-in store and 
 **Compatible with <a href="https://docs.ethers.org/v6/" target="_blank">ethers.js</a>, <a href="https://viem.sh/" target="_blank">viem</a> and <a href="https://docs.web3js.org/" target="_blank">Web3.js</a>**
 
 ### Current supported protocols & wallets
-- Extension Wallets (Injected + EIP-6963)
-- WalletConnect v2 Protocol
+The core package of this library supports **injected** *(browser extension)* and **EIP-6963** compliant wallet.
+
+Additional packages that can be optionally installed:
+- **WalletConnect** v2 connector *(recommended)*
+- **Coinbase SDK** connector *(coming soon)*
+- **MetaMask SDK** connector *(coming soon)*
 
 ### Install
 
@@ -19,10 +23,17 @@ It sets up for you a wallet connection infrastructure with a built-in store and 
 npm i w3-evm-react
 ```
 
+### Install WalletConnect connector
+
+```bash npm2yarn
+npm i w3-evm-walletconnect
+```
+
 ### Init W3
 
 ```tsx
-import { W3, initW3, Injected, WalletConnect } from 'w3-evm-react'
+import { W3, initW3, Injected } from 'w3-evm-react'
+import { WalletConnect } from 'w3-evm-walletconnect'
 
 /* Icons */
 import walletconnect from 'public/walletconnect.svg'
@@ -34,10 +45,10 @@ const projectId = 'YOUR_PROJECT_ID'
 const w3props = initW3({
   connectors: [
     new Injected({ icon: wallet }), 
-    new WalletConnect({ projectId, icon: walletconnect, showQrModal: true })
+    new WalletConnect({ projectId, icon: walletconnect, showQrModal: true, optionalChains:[1, 137] })
   ],
-  chains:[1, 137],
-  SSR: true, // For SSR Frameworks like Next.js
+  defaultChain: 1, // Optional
+  SSR: true, // Optional - For SSR Frameworks like Next.js
 })
 
 export default function App({ Component, pageProps }: AppProps) {

@@ -12,7 +12,8 @@ initW3 must be called outside the root component. We want to avoid unwanted rere
 
 :::
 ```tsx
-import { W3, initW3, Injected, WalletConnect } from 'w3-evm-react'
+import { W3, initW3, Injected } from 'w3-evm-react'
+import { WalletConnect } from 'w3-evm-walletconnect'
 
 import walletconnect from 'public/walletconnect.svg'
 import wallet from 'public/wallet.png'
@@ -23,10 +24,10 @@ const projectId = 'YOUR_PROJECT_ID'
 initW3({
   connectors: [
     new Injected({ icon: wallet }), 
-    new WalletConnect({ projectId, icon: walletconnect, showQrModal: true })
+    new WalletConnect({ projectId, icon: walletconnect, showQrModal: true, optionalChains:[1, 137] })
   ],
-  chains:[1],
-  SSR: true //Optional
+  defaultChain: 1, // Optional
+  SSR: true // Optional
 })
 ```
 
@@ -67,7 +68,9 @@ initW3({
 
 ### WalletConnect Connector
 
-Only the projectId is a required param in WalletConnect connector.
+:::note
+In addition to the icon property, WalletConnect params are the same as ethereum-provider's.
+:::
 
 ```tsx
 import { W3, WalletConnect, initW3 } from 'w3-evm-react'
@@ -77,11 +80,16 @@ const projectId = env.process.PROJECT_ID as string
 const walletConnect = new WalletConnect({ 
   icon: '/icons/walletconnect.svg',
   projectId,
-  showQrModal: true, //true by default
+  optionalChains:[1,137]
+  showQrModal: true,
   qrModalOptions: {
     themeMode: 'light'
   },
 })
+
+:::note
+optionalChains is recommended for multi-chain apps. (compatible with Smart Contract Wallets)
+:::
 
 initW3({
   connectors: [walletConnect],
@@ -94,7 +102,7 @@ Create your WalletConnect Project ID in <a href='https://cloud.walletconnect.com
 **URI**<br/>
 If you'd like to handle the modal on your own you can listen to the uri with
 ```ts
-import { subW3 } from 'w3-evm'
+import { subWC } from 'w3-evm-walletconnect'
 
 function handler(uri: string){
   //handle uri
@@ -105,14 +113,14 @@ const unsub = subW3.uri(handler)
 
 The **uri** is the value you can use to create your own QR code.
 
-### Chains
+### defaultChain
 
-You can either pass an array of chain id's or and array of chain objects following [EIP-3085](https://eips.ethereum.org/EIPS/eip-3085)
+You can either pass a chain id or a chain object following [EIP-3085](https://eips.ethereum.org/EIPS/eip-3085)
 
 ```tsx
 initW3({
   //...
-  chains:[1, 137],
+  defaultChain: 1,
   //...
 })
 ```
@@ -137,11 +145,11 @@ export const mainnet: Chain = {
 
 initW3({
   //...
-  chains:[mainnet],
+  defaultChain: mainnet,
   //...
 })
 ```
-If only one chain is set in the initW3 or if a chain is pass down to the `connectW3` function then W3 will request the user to switch to that chain first before connecting, if the user doesn't have the chain added then W3 with request to add it (this will only happen if the chain passed is EIP-3085 compliant).
+When adding a default chain or if a chain is passed down to the `connectW3` function then W3 will request the user to switch to that chain first before connecting, if the user doesn't have the chain added then W3 with request to add it (this will only happen if the chain passed is EIP-3085 compliant).
 
 ### EIP6963
 
