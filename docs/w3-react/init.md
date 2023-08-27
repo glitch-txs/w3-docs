@@ -6,9 +6,9 @@ sidebar_position: 2
 ## W3 Properties
 
 To initialize W3 we call `initW3` function.
-:::caution Important
+:::note Important
 
-initW3 must be called outside the root component. We want to avoid unwanted rerenders.
+initW3 must be called outside the root component to want to avoid unwanted rerenders.
 
 :::
 ```tsx
@@ -23,8 +23,13 @@ const projectId = 'YOUR_PROJECT_ID'
 
 initW3({
   connectors: [
-    new Injected({ icon: wallet }), 
-    new WalletConnect({ projectId, icon: walletconnect, showQrModal: true, optionalChains:[1, 137] })
+    new Injected({ icon: wallet }),
+    new WalletConnect({ 
+      projectId,
+      icon: walletconnect,
+      showQrModal: true,
+      optionalChains:[1, 137]
+    })
   ],
   defaultChain: 1, // Optional
   SSR: true // Optional
@@ -35,14 +40,14 @@ initW3({
 
 ## Connectors
 
-Connectors are classes that instantiate a type of communication protocol between a website and a wallet. There are three main connectors: Injected, EIP6963 and WalletConnect.
+Connectors are classes that instantiate a type of communication protocol between a website and a wallet. There are three main connectors: Injected, EIP6963 and WalletConnect *(external)*.
 
 ### Injected Connector
 
 Injected connector class doesn't require any parameters but you can:
 
 - Pass an `icon` to use it later on.
-- Pass a `name` to display in the website UI.
+- Pass a `name` to display on the UI.
 - Pass an `id`, useful if you would like to use the Injected connector multiple times to target different extension wallet.
 - Pass a `getProvider` function.
 
@@ -54,10 +59,10 @@ function getProvider(){
 }
 
 const browserWallet = new Injected({ 
- name: 'Extension Wallet',
- id: 'extensionWallet',
+ name: 'Browser Wallet',
+ id: 'browserWallet',
  getProvider,
- icon: '/icons/extension-wallet.svg'
+ icon: '/icons/browser-wallet.svg'
 })
 
 initW3({
@@ -87,15 +92,15 @@ const walletConnect = new WalletConnect({
   },
 })
 
-:::note
-optionalChains is recommended for multi-chain apps. (compatible with Smart Contract Wallets)
-:::
-
 initW3({
   connectors: [walletConnect],
   //...
 })
 ```
+
+:::note
+optionalChains is recommended for multi-chain apps. (compatible with Smart Contract Wallets)
+:::
 
 Create your WalletConnect Project ID in <a href='https://cloud.walletconnect.com/sign-in' target='_blank' >WalletConnect's Cloud Website</a>
 
@@ -108,12 +113,14 @@ function handler(uri: string){
   //handle uri
 }
 
-const unsub = subW3.uri(handler)
+const unsubscribe = subWC.uri(handler)
 ```
 
 The **uri** is the value you can use to create your own QR code.
 
 ### defaultChain
+
+When adding a default chain or if a chain is passed down to the `connectW3` function then W3 will request the user to switch to that chain first before connecting, if the user doesn't have the chain added then W3 with request to add it (this last step will only happen if the chain passed is EIP-3085 compliant).
 
 You can either pass a chain id or a chain object following [EIP-3085](https://eips.ethereum.org/EIPS/eip-3085)
 
@@ -149,11 +156,10 @@ initW3({
   //...
 })
 ```
-When adding a default chain or if a chain is passed down to the `connectW3` function then W3 will request the user to switch to that chain first before connecting, if the user doesn't have the chain added then W3 with request to add it (this will only happen if the chain passed is EIP-3085 compliant).
 
 ### EIP6963
 
-EIP6963 will allow support for EIP-6963 compatible wallets. They are going to be detected by W3 automatically and create a new class for them internally. You don't need to do anything, W3 will handle it for you.
+EIP6963 will allow support for EIP-6963 compatible wallets. They are going to be detected by W3 automatically and create a new instance for them internally. You don't need to do anything, W3 will handle it for you.
 
 ## W3 Component
 W3 component is only required if you're using SSR flag.

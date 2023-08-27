@@ -30,9 +30,16 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'W3 Vanilla',
+      label: 'W3 Core',
       items: [
         'w3-core/intro',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Adapters',
+      items: [
+        'web3modal-v3/intro',
       ],
     },
   ],

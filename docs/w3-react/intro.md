@@ -31,6 +31,12 @@ npm i w3-evm-walletconnect
 
 ### Init W3
 
+:::note Important
+
+initW3 must be called outside the root component to want to avoid unwanted rerenders.
+
+:::
+
 ```tsx
 import { W3, initW3, Injected } from 'w3-evm-react'
 import { WalletConnect } from 'w3-evm-walletconnect'
@@ -45,7 +51,12 @@ const projectId = 'YOUR_PROJECT_ID'
 const w3props = initW3({
   connectors: [
     new Injected({ icon: wallet }), 
-    new WalletConnect({ projectId, icon: walletconnect, showQrModal: true, optionalChains:[1, 137] })
+    new WalletConnect({ 
+      projectId,
+      icon: walletconnect,
+      showQrModal: true,
+      optionalChains:[1, 137]
+    })
   ],
   defaultChain: 1, // Optional
   SSR: true, // Optional - For SSR Frameworks like Next.js
@@ -109,7 +120,7 @@ export default function UserInfo(){
 }
 ```
 
-### Use with <a href="https://docs.ethers.org/v6/" target="_blank">ethers.js</a>
+### Use with <a href="https://docs.ethers.org/v6/" target="_blank">Ethers.js</a>
 ```tsx
 import { BrowserProvider } from 'ethers'
 import { getW3Provider } from 'w3-evm-react'
@@ -149,7 +160,7 @@ export default function useWeb3Provider() {
 }
 ```
 
-### Use with <a href="https://viem.sh/" target="_blank">viem</a>
+### Use with <a href="https://viem.sh/" target="_blank">Viem</a>
 ```tsx
 import { getW3Provider } from 'w3-evm-react'
 import { createWalletClient, custom } from 'viem'
