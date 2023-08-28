@@ -28,5 +28,3 @@ export default function App({ Component, pageProps }: AppProps) {
   return <Component {...pageProps} />
 }
 ```
-
-You're good to go!
