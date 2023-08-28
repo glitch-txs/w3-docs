@@ -8,7 +8,7 @@ sidebar_position: 2
 To initialize W3 we call `initW3` function.
 :::note Important
 
-initW3 must be called outside the root component to want to avoid unwanted rerenders.
+initW3 must be called outside the root component to avoid unwanted rerenders.
 
 :::
 ```tsx

@@ -33,7 +33,7 @@ npm i w3-evm-walletconnect
 
 :::note Important
 
-initW3 must be called outside the root component to want to avoid unwanted rerenders.
+initW3 must be called outside the root component to avoid unwanted rerenders.
 
 :::
 
