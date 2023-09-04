@@ -9,7 +9,7 @@ sidebar_position: 3
 To create a connection component you can use `useConnect` hook. It returns two reactive values: `wait` and `wallets`, and two functions: `connectW3` and `disconnectW3`.
 
 ```tsx
-import { useConnect } from 'w3-evm-react'
+import { useConnect } from '@w3vm/react'
 
 export default function Connect() {
 

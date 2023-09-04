@@ -12,8 +12,8 @@ initW3 must be called outside the root component to avoid unwanted rerenders.
 
 :::
 ```tsx
-import { W3, initW3, Injected } from 'w3-evm-react'
-import { WalletConnect } from 'w3-evm-walletconnect'
+import { W3, initW3, Injected } from '@w3vm/react'
+import { WalletConnect } from '@w3vm/walletconnect'
 
 import walletconnect from 'public/walletconnect.svg'
 import wallet from 'public/wallet.png'
@@ -52,7 +52,7 @@ Injected connector class doesn't require any parameters but you can:
 - Pass a `getProvider` function.
 
 ```tsx
-import { W3, Injected, initW3 } from 'w3-evm-react'
+import { W3, Injected, initW3 } from '@w3vm/react'
 
 function getProvider(){
   return window.ethereum
@@ -78,7 +78,7 @@ In addition to the icon property, WalletConnect params are the same as ethereum-
 :::
 
 ```tsx
-import { W3, WalletConnect, initW3 } from 'w3-evm-react'
+import { W3, WalletConnect, initW3 } from '@w3vm/react'
 
 const projectId = env.process.PROJECT_ID as string
 
@@ -107,7 +107,7 @@ Create your WalletConnect Project ID in <a href='https://cloud.walletconnect.com
 **URI**<br/>
 If you'd like to handle the modal on your own you can listen to the uri with
 ```ts
-import { subWC } from 'w3-evm-walletconnect'
+import { subWC } from '@w3vm/walletconnect'
 
 function handler(uri: string){
   //handle uri
@@ -135,7 +135,7 @@ initW3({
 or
 
 ```tsx
-import { Chain } from "w3-evm-react";
+import { Chain } from "@w3vm/react";
 
 export const mainnet: Chain = {
   chainName: 'Ethereum Mainnet',

@@ -7,7 +7,7 @@ sidebar_position: 5
 If you are **not** using SSR or want to deal with hydration mismatch errors to get a faster first load of W3, you can ignore the SSR flag and not use the W3 component.
 
 ```tsx
-import { initW3, Injected, WalletConnect } from 'w3-evm-react'
+import { initW3, Injected, WalletConnect } from '@w3vm/react'
 
 /* Icons */
 import walletconnect from 'public/walletconnect.svg'
